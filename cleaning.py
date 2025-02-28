@@ -20,64 +20,6 @@ print(df.describe())
 df.drop_duplicates(inplace=True)
 df
 
-
-# # Handle missing values
-# # Fill missing numerical values with median, and categorical with mode
-# for column in df.columns:
-#     if df[column].dtype == 'object':  # Check if the column is categorical
-#         df[column].fillna(df[column].mode()[0], inplace=True)
-#     else:  # Assume the column is numerical
-#         df[column].fillna(df[column].median(), inplace=True)
-
-# # Converting necessary columns to appropriate data types
-# df['followers'] = df['followers'].str.replace('m', '').str.replace('k', '').astype(float)
-# df['posts'] = df['posts'].str.replace('k', '').astype(float)
-# df['total_likes'] = df['total_likes'].str.replace('b', '').str.replace('m', '').astype(float)
-
-# # If you want to convert 'followers', 'posts', and 'total_likes' to integers after cleaning:
-# df['followers'] = df['followers'].astype(int)
-# df['posts'] = df['posts'].astype(int)
-# df['total_likes'] = df['total_likes'].astype(int)
-
-# #Step-2: Exploratory Data Analysis(EDA)
-
-# print(df[['influence_score', 'followers', 'avg_likes', '60_day_eng_rate', 'new_post_avg_like']].describe())
-
-# # Relationship between Followers and Engagement
-# plt.figure(figsize=(12,6))
-# sns.scatterplot(data=df, x = 'followers', y ='60_day_eng_rate', hue= 'country', alpha = 0.7)
-# plt.title('Followers vs 60-Day Engagement Rate')
-# plt.xlabel('Number of Followers')
-# plt.ylabel('60-Day Engagement Rate(%)')
-# plt.legend(title= 'Country')
-# plt.show()
-
-# # Distribution of Influence score
-
-# plt.figure(figsize=(10,5))
-# sns.histplot(df['influence_score'], bins = 30, kde= True)
-# plt.title('Distribution of Influence Score')
-# plt.xlabel('Influence Score')
-# plt.show()
-
-# # Most active countries
-
-# top_countries = df['country'].value_counts().head(10)
-
-# plt.figure(figsize=(10, 5))
-# sns.barplot(x = top_countries.index, y = top_countries.values, palette = "viridis")
-# plt.title('Top 10 Countries by Number of Influencers')
-# plt.xlabel('Country')
-# plt.ylabel('Number of Influencers')
-# plt.show()
-
-# # Step-3 feature engineering- to improve model's performance
-
-# df['like_follower_ratio'] = df['total_likes']/df['followers']
-# df['post_follower_ratio'] = df['posts']/df['followers']
-# df['avg_likes_ratio'] = df['avg_likes']/df['followers']
-
-
 # Handle missing values
 # Fill missing numerical values with median, and categorical with mode
 for column in df.columns:
